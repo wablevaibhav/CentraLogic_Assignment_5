@@ -16,9 +16,12 @@ class LayoutHome extends StatelessWidget {
               create: (context) => FeedbackBloc(),
               child: const DesktopLayoutHome());
         } else {
-          return const MobileLayoutHome();
+          return BlocProvider(
+              create: (context) => FeedbackBloc(),
+              child: const MobileLayoutHome());
         }
-      },
+        }
+
     );
   }
 }
