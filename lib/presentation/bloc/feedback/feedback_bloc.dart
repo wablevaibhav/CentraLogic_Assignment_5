@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 import 'feedback_event.dart';
@@ -21,7 +22,9 @@ class FeedbackBloc extends Bloc<FeedbackEvent, FeedbackState> {
       );
 
       if (response.statusCode != 200) {
-        print("Failed to fetch question. Status Code: ${response.statusCode}");
+        if (kDebugMode) {
+          print("Failed to fetch question. Status Code: ${response.statusCode}");
+        }
         return;
       }
 
@@ -42,10 +45,14 @@ class FeedbackBloc extends Bloc<FeedbackEvent, FeedbackState> {
           messages: [...state.messages, message],
         ));
       } else {
-        print("Unexpected non-JSON response format: $nonJsonResponse");
+        if (kDebugMode) {
+          print("Unexpected non-JSON response format: $nonJsonResponse");
+        }
       }
     } catch (e) {
-      print("Error during API request: $e");
+      if (kDebugMode) {
+        print("Error during API request: $e");
+      }
     }
   }
 }
