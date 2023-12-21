@@ -21,8 +21,9 @@ class _MobileLayoutHomeState extends State<MobileLayoutHome> {
     final double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size(width, 82),
+        preferredSize: Size(width, 75),
         child: Container(
+          margin: const EdgeInsets.only(top: 25),
           decoration: const BoxDecoration(
             border: Border(
               bottom: BorderSide(
@@ -33,9 +34,9 @@ class _MobileLayoutHomeState extends State<MobileLayoutHome> {
           ),
           width: width,
           child: Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.all(12),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
                   'Welcome To CentraLogic!',
@@ -74,7 +75,7 @@ class _MobileLayoutHomeState extends State<MobileLayoutHome> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                width: 300,
+                width: 250,
                 child: TextField(
                   controller: _textController,
                   decoration: InputDecoration(
@@ -145,7 +146,7 @@ class _MobileLayoutHomeState extends State<MobileLayoutHome> {
                 'CentraLogic Bot',
                 style: GoogleFonts.roboto(
                   fontWeight: FontWeight.w600,
-                  fontSize: 18,
+                  fontSize: 16,
                   color: Colors.black,
                 ),
               ),
@@ -153,7 +154,7 @@ class _MobileLayoutHomeState extends State<MobileLayoutHome> {
                 'Hi! I am CentraLogic Bot, your onboarding agent',
                 style: GoogleFonts.roboto(
                   fontWeight: FontWeight.w400,
-                  fontSize: 16,
+                  fontSize: 14,
                   color: Colors.black,
                 ),
               ),
@@ -195,7 +196,7 @@ class _MobileLayoutHomeState extends State<MobileLayoutHome> {
                                 width: 10,
                               ),
                               Container(
-                                width: 350,
+                                width: 250,
                                 padding: const EdgeInsets.all(8),
                                 decoration: BoxDecoration(
                                   color: const Color.fromRGBO(233, 236, 244, 1),
@@ -229,7 +230,7 @@ class _MobileLayoutHomeState extends State<MobileLayoutHome> {
                                 width: 10,
                               ),
                               Container(
-                                width: 350,
+                                width: 250,
                                 padding: const EdgeInsets.all(8),
                                 decoration: BoxDecoration(
                                   color: const Color.fromRGBO(233, 236, 244, 1),
@@ -305,7 +306,7 @@ class _MobileLayoutHomeState extends State<MobileLayoutHome> {
                                         width: 10,
                                       ),
                                       Container(
-                                        width: 350,
+                                        width: 250,
                                         padding: const EdgeInsets.all(8),
                                         decoration: BoxDecoration(
                                           color: const Color.fromRGBO(
