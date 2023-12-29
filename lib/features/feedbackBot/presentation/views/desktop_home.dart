@@ -1,13 +1,10 @@
-import 'dart:convert';
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http/http.dart' as http;
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../bloc/feedback/feedback_bloc.dart';
-import '../../bloc/feedback/feedback_event.dart';
-import '../../bloc/feedback/feedback_state.dart';
+import '../bloc/feedback_bloc.dart';
+import '../bloc/feedback_event.dart';
+import '../bloc/feedback_state.dart';
 
 class DesktopLayoutHome extends StatefulWidget {
   const DesktopLayoutHome({Key? key}) : super(key: key);

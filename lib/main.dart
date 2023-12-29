@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
-import 'presentation/pages/layout_home.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'features/feedbackBot/presentation/bloc/feedback_bloc.dart';
+import 'features/feedbackBot/presentation/pages/layout_home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,8 +22,10 @@ class MyApp extends StatelessWidget {
           primary: Colors.blue,
         ),
       ),
-      home: const LayoutHome(),
+      home: BlocProvider(
+        create: (context) => FeedbackBloc(),
+        child: const LayoutHome(),
+      ),
     );
   }
 }
-
