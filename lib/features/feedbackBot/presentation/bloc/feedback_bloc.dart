@@ -1,6 +1,7 @@
+import 'dart:convert';
+
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
-import 'package:feedback_bot/features/feedbackBot/data/model/feedback.dart';
 import 'package:flutter/foundation.dart';
 
 import 'feedback_event.dart';
@@ -11,7 +12,7 @@ class FeedbackBloc extends Bloc<FeedbackEvent, FeedbackState> {
 
   FeedbackBloc() : super(const FeedbackState(step: 0, messages: [])) {
     on<FeedbackEvent>(_onFetchQuestion);
-  }//
+  }
 
   void _onFetchQuestion(
       FeedbackEvent event, Emitter<FeedbackState> emit) async {
@@ -23,29 +24,28 @@ class FeedbackBloc extends Bloc<FeedbackEvent, FeedbackState> {
 
       if (response.statusCode != 200) {
         if (kDebugMode) {
-          print(
-              "Failed to fetch question. Status Code: ${response.statusCode}");
+          print("Failed to fetch question. Status Code: ${response.statusCode}");
         }
         return;
       }
 
-      if (response.headers.map['content-type']?.contains('application/json') ??
-          false) {
-        final feedback = Feedback.fromJson(response.data);
+      final dynamic jsonContent = json.decode(response.data);
+      final message = jsonContent['message'].toString();
 
-        emit(FeedbackState(
-          step: event.step + 1,
-          messages: [...state.messages, feedback.message],
-        ));
-      } else {
-        if (kDebugMode) {
-          print("Unexpected non-JSON response format");
-        }
-      }
+      emit(FeedbackState(
+        step: event.step + 1,
+        messages: [...state.messages, message],
+      ));
+
     } catch (e) {
       if (kDebugMode) {
         print("Error during API request: $e");
       }
     }
   }
+
+
+
+
+
 }
